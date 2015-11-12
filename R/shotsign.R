@@ -40,12 +40,12 @@ shotsign <- function(data, width = NULL, height = NULL) {
 #'
 #' @export
 shotsignOutput <- function(outputId, width = '100%', height = '400px'){
-  shinyWidgetOutput(outputId, 'shotsign', width, height, package = 'shotsignR')
+  htmlwidgets::shinyWidgetOutput(outputId, 'shotsign', width, height, package = 'shotsignR')
 }
 
 #' @rdname shotsign-shiny
 #' @export
 renderShotsign <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  shinyRenderWidget(expr, shotsignOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, shotsignOutput, env, quoted = TRUE)
 }

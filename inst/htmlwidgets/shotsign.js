@@ -19,6 +19,9 @@ HTMLWidgets.widget({
 
     // get your data
     var data = HTMLWidgets.dataframeToD3(x.data);
+    
+    // delete everything for dynamic/shiny situations
+    el.innerHTML = "";
 
     // initialize SVG
     var width = 600, height = 200;
