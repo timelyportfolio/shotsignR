@@ -5,10 +5,12 @@
 #' @import htmlwidgets
 #'
 #' @export
-shotsign <- function(message, width = NULL, height = NULL) {
+shotsign <- function(data, width = NULL, height = NULL) {
 
   # forward options using x
-  x = list( )
+  x = list(
+    data = data
+  )
 
   # create widget
   htmlwidgets::createWidget(
