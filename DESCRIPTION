@@ -1,12 +1,31 @@
 Package: shotsignR
 Title: d3 Shooting Signatures in R as htmlwidget
 Version: 0.0.1
-Author: Kenton Russell
+Date: 2015-11-12
+Authors@R: c(
+      person(
+        "Mike", "Bostock"
+        , role = c("aut", "cph")
+        , comment = "d3.js library in htmlwidgets/lib, http://d3js.org"
+      ),
+      person(
+        "Peter", "Beshai"
+        , role = c("aut", "cph")
+        , comment = "graph idea and code, https://gist.github.com/pbeshai/ffd0f9d84b4e8df27db2"
+      ),
+      person(
+        "Kent", "Russell"
+        , role = c("aut", "cre")
+        , comment = "R interface"
+        , email = "kent.russell@timelyportfolio.com"
+      )
+    )
 Maintainer: Kenton Russell <kent.russell@timelyportfolio.com>
 Description: d3 Shooting Signatures in R as htmlwidget
 License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/timelyportfolio/shotsignR
 BugReports: https://github.com/timelyportfolio/shotsignR/issues
-Suggests: 
+Suggests:
     testthat
+RoxygenNote: 4.1.1.9001
