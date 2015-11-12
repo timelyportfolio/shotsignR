@@ -1,0 +1,36 @@
+
+```{r, setup, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  tidy = FALSE,
+  error = FALSE,
+  fig.width = 8,
+  fig.height = 8)
+```
+
+# shotsignR
+
+> d3 Shooting Signatures in R as htmlwidget
+
+[![Linux Build Status](https://travis-ci.org//shotsignR.svg?branch=master)](https://travis-ci.org//shotsignR)
+[![](http://www.r-pkg.org/badges/version/shotsignR)](http://www.r-pkg.org/pkg/shotsignR)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/shotsignR)](http://www.r-pkg.org/pkg/shotsignR)
+
+
+d3 Shooting Signatures in R as htmlwidget
+
+## Installation
+
+```{r eval = FALSE}
+devtools::install_github("/shotsignR")
+```
+
+## Usage
+
+```{r}
+library(shotsignR)
+```
+
+## License
+
+MIT + file LICENSE © [Kenton Russell](https://github.com/).
