@@ -8,9 +8,7 @@
 shotsign <- function(message, width = NULL, height = NULL) {
 
   # forward options using x
-  x = list(
-    message = message
-  )
+  x = list( )
 
   # create widget
   htmlwidgets::createWidget(
