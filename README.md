@@ -25,4 +25,4 @@ library(shotsignR)
 
 ## License
 
-MIT + file LICENSE © [Kenton Russell](https://github.com/).
+MIT + file LICENSE © [Kenton Russell](https://github.com/timelyportfolio).
