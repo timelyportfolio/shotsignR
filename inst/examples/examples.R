@@ -41,6 +41,3 @@ x %>%
       colordomain = c(0,1)
     )
   }
-  
-  qplot(time, co2_uptake_rate, data = ., geom = "line", group = plant_id, 
-        colour = co2_concentration, size = co2_concentration)

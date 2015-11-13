@@ -133,6 +133,22 @@ HTMLWidgets.widget({
         .enter().append("stop")
           .attr("offset", function(d) { return d.offset })
           .attr("stop-color", function (d) { return d.stopColor; });
+          
+    // set up a container for tasks to perform after completion
+    //  one example would be add callbacks for event handling
+    //  styling
+    if (!(typeof xx.tasks === "undefined") ){
+      if ( (typeof xx.tasks.length === "undefined") ||
+       (typeof xx.tasks === "function" ) ) {
+         // handle a function not enclosed in array
+         // should be able to remove once using jsonlite
+         xx.tasks = [xx.tasks];
+      }
+      xx.tasks.map(function(t){
+        // for each tasks call the task with el supplied as `this`
+        t.call(el);
+      })
+    }          
 
   },
 

@@ -1,6 +1,24 @@
-#' <Add Title>
+#' Peter Beshai's Shooting Signatures
 #'
-#' <Add Description>
+#' Create shooting signatures plots using R and d3.js.  Although
+#'  originally designed for basketball
+#'  (see \href{https://gist.github.com/pbeshai/ffd0f9d84b4e8df27db2}{discussion}),
+#'  these plots can be used for various data sources.
+#'
+#' @param data \code{data.frame} with data to plot
+#' @param xdomain two element array representing the domain for 
+#'          the \code{x} scale
+#' @param ydomain two element array representing the domain for 
+#'          the \code{y} scale
+#' @param wdomain two element array representing the domain for 
+#'          the \code{width} scale
+#' @param colordomain two element array representing the domain for 
+#'          the \code{color} scale
+#' @param width,height valid \code{CSS} unit for the height and width
+#'          of the htmlwidget container \code{div}
+#' @param elementId \code{character} for a custom \code{id}
+#'
+#' @example inst/examples/examples.R
 #'
 #' @import htmlwidgets
 #'
@@ -11,7 +29,8 @@ shotsign <- function(
   ydomain = NULL,
   wdomain = NULL,
   colordomain = NULL,
-  width = NULL, height = NULL
+  width = NULL, height = NULL,
+  elementId = NULL
 ) {
   
   #set up defaults to work with basketball shot data
@@ -35,7 +54,8 @@ shotsign <- function(
     x,
     width = width,
     height = height,
-    package = 'shotsignR'
+    package = 'shotsignR',
+    elementId = elementId
   )
 }
 
