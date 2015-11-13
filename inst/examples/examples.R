@@ -8,3 +8,39 @@ test_data <- jsonlite::fromJSON(
 )
 
 shotsign( test_data )
+
+
+# now let's try the example from @kferris10
+library(dplyr)
+library(magrittr)
+library(ggplot2)
+
+x <- read.table("http://www.stat.ufl.edu/~winner/data/ecophys_rc.dat") %>% 
+  setNames(c("location", "treatment", "plant_id", "co2_concentration", "co2_uptake_rate")) %>% 
+  group_by(plant_id) %>% 
+  mutate(time = 1:n()) %>% 
+  ungroup()
+x
+
+x %>% 
+  filter(plant_id == 1) %>% 
+  qplot(time, co2_uptake_rate, data = ., geom = "line", group = plant_id, 
+        colour = co2_concentration, size = co2_concentration)
+
+x %>% 
+  filter(plant_id == 1) %>%
+  select(time, co2_uptake_rate, co2_concentration, co2_concentration) %>%
+  set_colnames(c("x","y","widthValue")) %>%
+  mutate(colorValue = widthValue/max(widthValue)) %>%
+  {
+    shotsign(
+      .,
+      xdomain = range(.$x),
+      ydomain = range(.$y),
+      wdomain = range(.$w),
+      colordomain = c(0,1)
+    )
+  }
+  
+  qplot(time, co2_uptake_rate, data = ., geom = "line", group = plant_id, 
+        colour = co2_concentration, size = co2_concentration)

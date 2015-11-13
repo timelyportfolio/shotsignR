@@ -5,11 +5,28 @@
 #' @import htmlwidgets
 #'
 #' @export
-shotsign <- function(data, width = NULL, height = NULL) {
+shotsign <- function(
+  data,
+  xdomain = NULL,
+  ydomain = NULL,
+  wdomain = NULL,
+  colordomain = NULL,
+  width = NULL, height = NULL
+) {
+  
+  #set up defaults to work with basketball shot data
+  if(is.null(xdomain)) xdomain = c(0,30)
+  if(is.null(ydomain)) ydomain = c(0,1)
+  if(is.null(wdomain)) wdomain = c(0,250)
+  if(is.null(colordomain)) colordomain = c(-0.15,0.15)
 
   # forward options using x
   x = list(
-    data = data
+    data = data,
+    xdomain = xdomain, 
+    ydomain = ydomain,
+    wdomain = wdomain,
+    colordomain = colordomain
   )
 
   # create widget
