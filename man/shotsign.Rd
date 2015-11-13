@@ -46,7 +46,8 @@ test_data <- jsonlite::fromJSON(
 shotsign( test_data )
 
 
-# now let's try the example from @kferris10
+# now let's try the example from
+#  issue https://github.com/timelyportfolio/buildingwidgets/issues/14
 library(dplyr)
 library(magrittr)
 library(ggplot2)
@@ -73,9 +74,54 @@ x \%>\%
       .,
       xdomain = range(.$x),
       ydomain = range(.$y),
-      wdomain = range(.$w),
+      wdomain = range(.$widthValue),
       colordomain = c(0,1)
     )
   }
+
+# finance example
+#  allocation by key rate duration
+#  use data from https://mpra.ub.uni-muenchen.de/46057/1/MPRA_paper_46057.pdf
+#  figure 5
+krd_data <- data.frame(
+  x = c(1/12,3/12,6/12,1,2), 
+  y = c(.2,.1,.5,.15,.05), # made up allocation
+  # difference in portfolio and benchmark return
+  widthValue = c(0.01,-0.04,-0.11,0.14,0.06),
+  colorValue = c(0.01,-0.04,-0.11,0.14,0.06)
+)
+
+ss <- shotsign(
+  krd_data,
+  xdomain = range(krd_data$x),
+  ydomain = c(-0.1,0.5),
+  wdomain = c(0.2,-0.2),
+  colordomain = c(0.2,-0.2),
+  height = 300,
+  width = 600
+)
+
+ss$x$tasks <- list(
+  htmlwidgets::JS(
+'
+function(){
+  d3.select(this).select("svg").append("text")
+    .attr("x","590")
+    .attr("y","290")
+    .style("text-anchor","end")
+    .text("Key Rate Duration")
+
+  d3.select(this).select("svg").append("text")
+      .attr("x",-20)
+      .attr("y",20)
+      .attr("transform", "rotate(-90)")
+      .style("text-anchor","end")
+      .text("Allocation")
+}
+'
+  )
+)
+
+ss
 }
 
