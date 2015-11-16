@@ -24,7 +24,7 @@ HTMLWidgets.widget({
     el.innerHTML = "";
 
     // margins
-    var margin = {top: 20, right: 10, bottom: 20, left: 30};
+    var margin = xx.margin;
 
     // set up width and height
     var width = el.getBoundingClientRect().width - margin.left - margin.right,
