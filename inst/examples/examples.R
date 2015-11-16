@@ -62,7 +62,8 @@ ss <- shotsign(
   wdomain = c(0.2,-0.2),
   colordomain = c(0.2,-0.2),
   height = 300,
-  width = 600
+  width = 600, 
+  margin = list(top = 20, right = 10, bottom = 20, left = 40)
 )
 
 ss$x$tasks <- list(
@@ -71,7 +72,7 @@ ss$x$tasks <- list(
 function(){
   d3.select(this).select("svg").append("text")
     .attr("x","590")
-    .attr("y","290")
+    .attr("y","270")
     .style("text-anchor","end")
     .text("Key Rate Duration")
 
