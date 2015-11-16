@@ -50,6 +50,28 @@ HTMLWidgets.widget({
     var w = d3.scale.linear()
       .domain(xx.wdomain ? xx.wdomain : [0, 250])
       .range([minWidth, maxWidth]);
+      
+    // Axes ----------------------------------------------------
+    // x-axis
+    var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+    // y-axis
+    var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
+      
+    // appending to plot
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0, " + height + ")")
+      .call(xAxis);
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+    
+      
+      
     // NOTE: if you want maxWidth to truly be the maximum width of the signature,
     // you'll need to add .clamp(true) to w.
     // need two area plots to make the signature extend in width in both directions around the line
