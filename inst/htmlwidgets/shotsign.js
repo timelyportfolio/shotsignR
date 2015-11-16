@@ -23,13 +23,19 @@ HTMLWidgets.widget({
     // delete everything for dynamic/shiny situations
     el.innerHTML = "";
 
-    // initialize SVG
-    var width = el.getBoundingClientRect().width,
-        height = el.getBoundingClientRect().height;
+    // margins
+    var margin = {top: 20, right: 10, bottom: 20, left: 30};
+
+    // set up width and height
+    var width = el.getBoundingClientRect().width - margin.left - margin.right,
+        height = el.getBoundingClientRect().height - margin.top - margin.bottom;
     
+    // initialize SVG
     var svg = d3.select(el).append("svg")
-      .attr("width", width)
-      .attr("height", height);
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
       
     // x = distance in shooting signatures
     var x = d3.scale.linear()
