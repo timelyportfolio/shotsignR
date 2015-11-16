@@ -8,7 +8,7 @@
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/shotsignR)](http://www.r-pkg.org/pkg/shotsignR)
 
 
-d3 Shooting Signatures in R as htmlwidget
+`d3.js` [Shooting Signatures](https://gist.github.com/pbeshai/ffd0f9d84b4e8df27db2) from [Peter Beshai](http://peterbeshai.com/) in R as htmlwidget
 
 ## Installation
 
@@ -20,6 +20,7 @@ devtools::install_github("timelyportfolio/shotsignR")
 
 ```r
 library(shotsignR)
+?shotsign
 ```
 
 ## License

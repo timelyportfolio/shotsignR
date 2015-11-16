@@ -1,15 +1,51 @@
-#' <Add Title>
+#' Peter Beshai's Shooting Signatures
 #'
-#' <Add Description>
+#' Create shooting signatures plots using R and d3.js.  Although
+#'  originally designed for basketball
+#'  (see \href{https://gist.github.com/pbeshai/ffd0f9d84b4e8df27db2}{discussion}),
+#'  these plots can be used for various data sources.
+#'
+#' @param data \code{data.frame} with data to plot
+#' @param xdomain two element array representing the domain for 
+#'          the \code{x} scale
+#' @param ydomain two element array representing the domain for 
+#'          the \code{y} scale
+#' @param wdomain two element array representing the domain for 
+#'          the \code{width} scale
+#' @param colordomain two element array representing the domain for 
+#'          the \code{color} scale
+#' @param width,height valid \code{CSS} unit for the height and width
+#'          of the htmlwidget container \code{div}
+#' @param elementId \code{character} for a custom \code{id}
+#'
+#' @example inst/examples/examples.R
 #'
 #' @import htmlwidgets
 #'
 #' @export
-shotsign <- function(data, width = NULL, height = NULL) {
+shotsign <- function(
+  data,
+  xdomain = NULL,
+  ydomain = NULL,
+  wdomain = NULL,
+  colordomain = NULL,
+  width = NULL, height = NULL,
+  elementId = NULL
+) {
+  
+  #set up defaults to work with basketball shot data
+  if(is.null(xdomain)) xdomain = c(0,30)
+  if(is.null(ydomain)) ydomain = c(0,1)
+  if(is.null(wdomain)) wdomain = c(0,250)
+  if(is.null(colordomain)) colordomain = c(-0.15,0.15)
 
   # forward options using x
   x = list(
-    data = data
+    data = data,
+    xdomain = xdomain, 
+    ydomain = ydomain,
+    wdomain = wdomain,
+    colordomain = colordomain
   )
 
   # create widget
@@ -18,7 +54,8 @@ shotsign <- function(data, width = NULL, height = NULL) {
     x,
     width = width,
     height = height,
-    package = 'shotsignR'
+    package = 'shotsignR',
+    elementId = elementId
   )
 }
 
@@ -40,12 +77,12 @@ shotsign <- function(data, width = NULL, height = NULL) {
 #'
 #' @export
 shotsignOutput <- function(outputId, width = '100%', height = '400px'){
-  shinyWidgetOutput(outputId, 'shotsign', width, height, package = 'shotsignR')
+  htmlwidgets::shinyWidgetOutput(outputId, 'shotsign', width, height, package = 'shotsignR')
 }
 
 #' @rdname shotsign-shiny
 #' @export
 renderShotsign <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  shinyRenderWidget(expr, shotsignOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, shotsignOutput, env, quoted = TRUE)
 }
