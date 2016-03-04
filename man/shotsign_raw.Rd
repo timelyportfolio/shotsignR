@@ -34,8 +34,7 @@ Estimates the density of \code{x} using \code{\link{density}}.
   color values for \code{shotsign}.
 }
 \examples{
-shotsign_raw(iris, x = Sepal.Length, y = Sepal.Width, color = Petal.Length,
-             xdomain = c(4, 8), ydomain = c(2, 4.5), wdomain = c(1, 2), colordomain = c(1, 7))
+shotsign_raw(iris, x = Sepal.Length, y = Petal.Length, color = Sepal.Width)
 }
 \seealso{
 shotsign

@@ -19,8 +19,7 @@
 #' @seealso shotsign
 #' @export
 #' @examples 
-#' shotsign_raw(iris, x = Sepal.Length, y = Sepal.Width, color = Petal.Length, 
-#'              xdomain = c(4, 8), ydomain = c(2, 4.5), wdomain = c(1, 2), colordomain = c(1, 7))
+#' shotsign_raw(iris, x = Sepal.Length, y = Petal.Length, color = Sepal.Width)
 shotsign_raw <- function(data, x, y, color, ...) {
   # extracting the x, y, color variables from data
   # see http://adv-r.had.co.nz/Computing-on-the-language.html#capturing-expressions for more details

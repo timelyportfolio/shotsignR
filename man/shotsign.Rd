@@ -10,28 +10,28 @@ shotsign(data, xdomain = NULL, ydomain = NULL, wdomain = NULL,
 \arguments{
 \item{data}{\code{data.frame} with data to plot}
 
-\item{xdomain}{two element array representing the domain for
-the \code{x} scale}
+\item{xdomain}{two element array representing the domain for the \code{x}
+scale.  If NULL, defaults to \code{range(data$x)}.}
 
-\item{ydomain}{two element array representing the domain for
-the \code{y} scale}
+\item{ydomain}{two element array representing the domain for the \code{y}
+scale.  If NULL, defaults to \code{range(data$y)}.}
 
-\item{wdomain}{two element array representing the domain for
-the \code{width} scale}
+\item{wdomain}{two element array representing the domain for the \code{width}
+scale.  If NULL, defaults to \code{range(data$widthValue)}.}
 
-\item{colordomain}{two element array representing the domain for
-the \code{color} scale}
+\item{colordomain}{two element array representing the domain for the
+\code{color} scale.  If NULL, defaults to \code{range(data$colorValue)}.}
 
-\item{width,height}{valid \code{CSS} unit for the height and width
-of the htmlwidget container \code{div}}
+\item{width,height}{valid \code{CSS} unit for the height and width of the
+htmlwidget container \code{div}}
 
 \item{elementId}{\code{character} for a custom \code{id}}
 }
 \description{
-Create shooting signatures plots using R and d3.js.  Although
- originally designed for basketball
- (see \href{https://gist.github.com/pbeshai/ffd0f9d84b4e8df27db2}{discussion}),
- these plots can be used for various data sources.
+Create shooting signatures plots using R and d3.js.  Although originally
+designed for basketball (see
+\href{https://gist.github.com/pbeshai/ffd0f9d84b4e8df27db2}{discussion}),
+these plots can be used for various data sources.
 }
 \examples{
 # devtools::install_github("timelyportfolio/shotsignR")
