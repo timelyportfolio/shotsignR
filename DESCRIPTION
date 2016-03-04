@@ -27,7 +27,8 @@ LazyData: true
 URL: https://github.com/timelyportfolio/shotsignR
 BugReports: https://github.com/timelyportfolio/shotsignR/issues
 Imports:
-    htmlwidgets
+    htmlwidgets, 
+    mgcv (>= 1.8-4)
 Suggests:
     testthat
 RoxygenNote: 4.1.1.9001
