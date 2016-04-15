@@ -18,6 +18,8 @@
 #'   htmlwidget container \code{div}
 #' @param margin named list of margins for plotting window.  For more details,
 #'   see \href{http://bl.ocks.org/mbostock/3019563}{Mike Bostock's explanation}
+#' @param ylab the label for the y axis
+#' @param xlab the label for the x axis
 #' @param elementId \code{character} for a custom \code{id}
 #'   
 #' @example inst/examples/examples.R
@@ -33,6 +35,8 @@ shotsign <- function(
   colordomain = NULL,
   width = NULL, height = NULL, 
   margin = list(top = 20, right = 10, bottom = 20, left = 30), 
+  ylab = "y", 
+  xlab = "x", 
   elementId = NULL
 ) {
   
@@ -49,7 +53,9 @@ shotsign <- function(
     ydomain = ydomain,
     wdomain = wdomain,
     colordomain = colordomain, 
-    margin = margin
+    margin = margin, 
+    ylab = ylab, 
+    xlab = xlab
   )
 
   # create widget
