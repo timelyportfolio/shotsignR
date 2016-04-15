@@ -182,13 +182,14 @@ HTMLWidgets.widget({
     // has to be appended after the signature to make sure it gets seen
     svg.append("text")
       .attr("class", "y axis axis-title")
+      .attr("text-anchor", "end")
       .attr("transform", "translate("+ (margin.left/2) +","+(margin.top)+")rotate(-90)")
       .text(xx.ylab);
       
     // x axis label
     svg.append("text")
       .attr("class", "x axis axis-title")
-      .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+      .attr("text-anchor", "end")  // this makes it easy to centre the text as the transform is applied to the anchor
       .attr("transform", "translate("+ (width) +","+(height-(margin.bottom/3))+")")  // centre below axis
       .text(xx.xlab);
 
