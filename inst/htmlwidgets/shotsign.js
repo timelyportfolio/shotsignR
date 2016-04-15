@@ -52,7 +52,7 @@ HTMLWidgets.widget({
     // y = Field Goal % in shooting signatures
     var y = d3.scale.linear()
       .domain(xx.ydomain ? xx.ydomain : [0, 1])
-      .range([height, 0 + maxWidth]);
+      .range([height, 0 + margin.top]);
     var w = d3.scale.linear()
       .domain(xx.wdomain ? xx.wdomain : [0, 250])
       .range([minWidth, maxWidth]);
