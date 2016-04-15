@@ -39,7 +39,9 @@ x %>%
       xdomain = range(.$x),
       ydomain = range(.$y),
       wdomain = range(.$widthValue),
-      colordomain = c(0,1)
+      colordomain = c(0,1), 
+      xlab = "time", 
+      ylab = "CO2 Update Rate"
     )
   }
 
