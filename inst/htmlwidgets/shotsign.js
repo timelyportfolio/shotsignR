@@ -23,13 +23,19 @@ HTMLWidgets.widget({
     // delete everything for dynamic/shiny situations
     el.innerHTML = "";
 
-    // initialize SVG
-    var width = el.getBoundingClientRect().width,
-        height = el.getBoundingClientRect().height;
+    // margins
+    var margin = xx.margin;
+
+    // set up width and height
+    var width = el.getBoundingClientRect().width - margin.left - margin.right,
+        height = el.getBoundingClientRect().height - margin.top - margin.bottom;
     
+    // initialize SVG
     var svg = d3.select(el).append("svg")
-      .attr("width", width)
-      .attr("height", height);
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
       
     // x = distance in shooting signatures
     var x = d3.scale.linear()
@@ -46,10 +52,32 @@ HTMLWidgets.widget({
     // y = Field Goal % in shooting signatures
     var y = d3.scale.linear()
       .domain(xx.ydomain ? xx.ydomain : [0, 1])
-      .range([height, 0 + maxWidth]);
+      .range([height, 0 + margin.top]);
     var w = d3.scale.linear()
       .domain(xx.wdomain ? xx.wdomain : [0, 250])
       .range([minWidth, maxWidth]);
+      
+    // Axes ----------------------------------------------------
+    // x-axis
+    var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+    // y-axis
+    var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
+      
+    // appending to plot
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0, " + height + ")")
+      .call(xAxis);
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+    
+      
+      
     // NOTE: if you want maxWidth to truly be the maximum width of the signature,
     // you'll need to add .clamp(true) to w.
     // need two area plots to make the signature extend in width in both directions around the line
@@ -148,7 +176,24 @@ HTMLWidgets.widget({
         // for each tasks call the task with el supplied as `this`
         t.call(el);
       })
-    }          
+    }
+    
+    // y axis label
+    // has to be appended after the signature to make sure it gets seen
+    svg.append("text")
+      .attr("class", "y axis axis-title")
+      .attr("font-weight", "bold")
+      .attr("text-anchor", "end")
+      .attr("transform", "translate("+ (margin.left/2) +","+(margin.top)+")rotate(-90)")
+      .text(xx.ylab);
+      
+    // x axis label
+    svg.append("text")
+      .attr("class", "x axis axis-title")
+      .attr("font-weight", "bold")
+      .attr("text-anchor", "end")  // this makes it easy to centre the text as the transform is applied to the anchor
+      .attr("transform", "translate("+ (width) +","+(height-(margin.bottom/3))+")")  // centre below axis
+      .text(xx.xlab);
 
   },
 
