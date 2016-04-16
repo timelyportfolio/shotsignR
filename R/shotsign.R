@@ -1,27 +1,31 @@
 #' Peter Beshai's Shooting Signatures
-#'
-#' Create shooting signatures plots using R and d3.js.  Although
-#'  originally designed for basketball
-#'  (see \href{https://gist.github.com/pbeshai/ffd0f9d84b4e8df27db2}{discussion}),
-#'  these plots can be used for various data sources.
-#'
+#' 
+#' Create shooting signatures plots using R and d3.js.  Although originally
+#' designed for basketball (see
+#' \href{https://gist.github.com/pbeshai/ffd0f9d84b4e8df27db2}{discussion}), 
+#' these plots can be used for various data sources.
+#' 
 #' @param data \code{data.frame} with data to plot
-#' @param xdomain two element array representing the domain for 
-#'          the \code{x} scale
-#' @param ydomain two element array representing the domain for 
-#'          the \code{y} scale
-#' @param wdomain two element array representing the domain for 
-#'          the \code{width} scale
-#' @param colordomain two element array representing the domain for 
-#'          the \code{color} scale
-#' @param width,height valid \code{CSS} unit for the height and width
-#'          of the htmlwidget container \code{div}
+#' @param xdomain two element array representing the domain for the \code{x}
+#'   scale
+#' @param ydomain two element array representing the domain for the \code{y}
+#'   scale
+#' @param wdomain two element array representing the domain for the \code{width}
+#'   scale
+#' @param colordomain two element array representing the domain for the
+#'   \code{color} scale
+#' @param width,height valid \code{CSS} unit for the height and width of the
+#'   htmlwidget container \code{div}
+#' @param margin named list of margins for plotting window.  For more details,
+#'   see \href{http://bl.ocks.org/mbostock/3019563}{Mike Bostock's explanation}
+#' @param ylab the label for the y axis
+#' @param xlab the label for the x axis
 #' @param elementId \code{character} for a custom \code{id}
-#'
+#'   
 #' @example inst/examples/examples.R
-#'
+#'   
 #' @import htmlwidgets
-#'
+#'   
 #' @export
 shotsign <- function(
   data,
@@ -29,7 +33,10 @@ shotsign <- function(
   ydomain = NULL,
   wdomain = NULL,
   colordomain = NULL,
-  width = NULL, height = NULL,
+  width = NULL, height = NULL, 
+  margin = list(top = 20, right = 10, bottom = 20, left = 30), 
+  ylab = "y", 
+  xlab = "x", 
   elementId = NULL
 ) {
   
@@ -45,7 +52,10 @@ shotsign <- function(
     xdomain = xdomain, 
     ydomain = ydomain,
     wdomain = wdomain,
-    colordomain = colordomain
+    colordomain = colordomain, 
+    margin = margin, 
+    ylab = ylab, 
+    xlab = xlab
   )
 
   # create widget

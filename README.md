@@ -1,4 +1,4 @@
-
+﻿
 # shotsignR
 
 > d3 Shooting Signatures in R as htmlwidget
