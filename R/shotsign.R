@@ -7,13 +7,13 @@
 #' 
 #' @param data \code{data.frame} with data to plot
 #' @param xdomain two element array representing the domain for the \code{x}
-#'   scale
+#'   scale.  If NULL, defaults to \code{range(data$x)}.
 #' @param ydomain two element array representing the domain for the \code{y}
-#'   scale
+#'   scale.  If NULL, defaults to \code{range(data$y)}.
 #' @param wdomain two element array representing the domain for the \code{width}
-#'   scale
+#'   scale.  If NULL, defaults to \code{range(data$widthValue)}.
 #' @param colordomain two element array representing the domain for the
-#'   \code{color} scale
+#'   \code{color} scale.  If NULL, defaults to \code{range(data$colorValue)}.
 #' @param width,height valid \code{CSS} unit for the height and width of the
 #'   htmlwidget container \code{div}
 #' @param margin named list of margins for plotting window.  For more details,
@@ -40,11 +40,11 @@ shotsign <- function(
   elementId = NULL
 ) {
   
-  #set up defaults to work with basketball shot data
-  if(is.null(xdomain)) xdomain = c(0,30)
-  if(is.null(ydomain)) ydomain = c(0,1)
-  if(is.null(wdomain)) wdomain = c(0,250)
-  if(is.null(colordomain)) colordomain = c(-0.15,0.15)
+  # defaults to range of each variable
+  if(is.null(xdomain)) xdomain = range(data[["x"]])
+  if(is.null(ydomain)) ydomain = range(data[["y"]])
+  if(is.null(wdomain)) wdomain = range(data[["widthValue"]])
+  if(is.null(colordomain)) colordomain = range(data[["colorValue"]])
 
   # forward options using x
   x = list(
